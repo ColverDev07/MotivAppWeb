@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi App - Bienvenido</title>
+  <link rel="stylesheet" href="./css/index.css"/>
+</head>
+<body>
+  <!-- Pantalla de carga mejorada -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Cargando energía positiva...</div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <div class="content-area">
+      <!-- Pantallas -->
+      <div id="home" class="screen active">
+        <div class="home-container">
+          <div class="glitch-box">
+            <div class="typing-text" id="typingText"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="frases" class="screen">
+        <div class="phrases-container">
+          <h1 class="neon-text">✨ Mensaje del día ✨</h1>
+          <div class="phrase-display" id="phraseDisplay">
+            <p class="current-phrase" id="currentPhrase">Toca el botón para comenzar</p>
+          </div>
+          <div class="phrase-buttons">
+            <button class="animated-button magic-button" id="randomPhraseBtn">🔮 Otra frase</button>
+            <button class="animated-button speak-button" id="repeatPhraseBtn">🔊 Repetir frase</button>
+            <button class="animated-button favorite-button" id="addFavoriteBtn">⭐ Guardar favorita</button>
+          </div>
+          <div class="favorites-list" id="favoritesList"></div>
+        </div>
+      </div>
+
+      <div id="favoritos" class="screen">
+  <div class="content-screen">
+    <h1 class="neon-text">⭐ Favoritos</h1>
+    
+
+    <!-- Aquí es donde se renderizan las frases -->
+    <div class="favorites-list" id="favoritesListScreen"></div>
+  </div>
+</div>
+
+      <div id="explorar" class="screen">
+        <div class="content-screen">
+          <h1 class="neon-text">🔍 Explorar</h1>
+          <h2 style="text-align: center; color: #fcd5ce; margin-bottom: 20px;">Selecciona una categoría:</h2>
+          <div class="category-buttons">
+            <button class="animated-button" data-category="riqueza">💰 Riqueza</button>
+            <button class="animated-button" data-category="amor_propio">💖 Amor propio</button>
+            <button class="animated-button" data-category="energia">⚡ Energía</button>
+            <button class="animated-button" data-category="disciplina">📈 Disciplina</button>
+          </div>
+          
+          <!-- Resultados de la exploración por categorías -->
+          <div class="custom-phrases-list" id="exploreResults"></div>
+        </div>
+      </div>
+
+      <div id="nueva-frase" class="screen">
+        <div class="content-screen">
+          <h1 class="neon-text">➕ Nueva Frase</h1>
+          <p style="text-align: center; color: #fcd5ce; margin-bottom: 20px;">Crea y agrega tus propias frases motivacionales personalizadas.</p>
+          
+          <!-- Formulario para crear nueva frase -->
+          <div class="phrase-form-container">
+            <textarea 
+              id="newPhraseInput" 
+              class="phrase-input" 
+              placeholder="Escribe tu frase motivacional aquí..."
+              maxlength="200"
+            ></textarea>
+            
+            <div class="character-counter">
+              <span id="charCount">0</span>/200 caracteres
+            </div>
+            
+            <div class="phrase-form-actions">
+              <button class="animated-button magic-button" id="savePhraseBtn">💾 Guardar Frase</button>
+              <button class="animated-button speak-button" id="previewPhraseBtn">🔊 Previsualizar</button>
+              <button class="animated-button" id="clearPhraseBtn">🗑️ Limpiar</button>
+            </div>
+          </div>
+          
+          <!-- Lista de frases personalizadas -->
+          <div class="custom-phrases-section">
+            <h3 class="section-title">📝 Mis Frases Personalizadas</h3>
+            <div class="custom-phrases-list" id="customPhrasesList"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="muro" class="screen">
+        <div class="motivation-wall">
+          <h1 class="neon-text">🔮 Muro de Cartas Místicas</h1>
+          <p style="text-align: center; color: #fcd5ce; margin-bottom: 20px;">Selecciona una carta para revelar tu mensaje del universo</p>
+          
+          <!-- Área de cartas -->
+          <div class="tarot-container">
+            <div class="wall-grid" id="wallGrid"></div>
+          </div>
+          
+          <!-- Botón de volver atrás (inicialmente oculto) -->
+          <button class="back-to-grid-btn" id="backToGridBtn" style="display: none;">⬅️ Volver al Muro</button>
+          
+          <!-- Botones de control -->
+          <div class="wall-controls">
+            <button class="animated-button magic-button" id="shuffleCardsBtn">🔄 Mezclar Cartas</button>
+            <button class="animated-button speak-button" id="readCardBtn">🔊 Leer Carta</button>
+            <button class="animated-button favorite-button" id="saveCardBtn">⭐ Guardar Mensaje</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="calendario" class="screen">
+        <div class="content-screen">
+          <h1 class="neon-text">📅 Calendario del Mes</h1>
+          <p style="text-align: center; color: #fcd5ce; margin-bottom: 20px;">Visualiza el mes y crea recordatorios para cada día.</p>
+          
+          <!-- Frase motivacional del día -->
+          <div class="phrase-display" style="margin-bottom: 20px;">
+            <p class="current-phrase" id="calendarPhrase">Cada día es una nueva oportunidad para brillar ✨</p>
+          </div>
+          
+          <!-- Calendario principal -->
+          <div class="calendar-container" id="calendarContainer">
+            <div class="calendar-header">
+              <button class="nav-button" id="prevMonthBtn">◀</button>
+              <h2 id="currentMonth">Enero 2024</h2>
+              <button class="nav-button" id="nextMonthBtn">▶</button>
+            </div>
+            
+            <div class="calendar-grid" id="calendarGrid">
+              <!-- Los días se generarán dinámicamente -->
+            </div>
+          </div>
+          
+          <!-- Modal para agregar recordatorio -->
+          <div class="modal-overlay" id="motivationModal">
+            <div class="modal-content">
+              <h3>📝 Agregar Recordatorio</h3>
+              
+              <!-- Frase automática del día -->
+              <div class="automatic-phrase-container" id="automaticPhraseContainer" style="display: none;">
+                <div class="automatic-phrase-label">✨ Frase del día:</div>
+                <div class="automatic-phrase-text" id="automaticPhraseText"></div>
+                <button class="animated-button speak-button" id="speakAutomaticPhraseBtn" style="margin-top: 10px; padding: 8px 15px; font-size: 12px;">
+                  🔊 Escuchar frase
+                </button>
+              </div>
+              
+              <div class="modal-form">
+                <label for="motivationDate">Fecha:</label>
+                <input type="date" id="motivationDate" class="modal-input">
+                
+                <label for="motivationText">Recordatorio:</label>
+                <textarea id="motivationText" class="modal-textarea" placeholder="Escribe tu recordatorio para este día..." maxlength="100"></textarea>
+                
+                <div class="modal-actions">
+                  <button class="animated-button" id="saveMotivationBtn">💾 Guardar</button>
+                  <button class="animated-button" id="cancelMotivationBtn">❌ Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="test" class="screen">
+        <div class="content-screen">
+          <h1 class="neon-text">🧠 Test Motivacional</h1>
+          <p style="text-align: center; color: #fcd5ce; margin-bottom: 20px;">Responde estas preguntas y descubre tu frase ideal</p>
+
+          <form id="motivationTestForm" class="test-form">
+            <div class="test-question">
+              <label>¿Cómo te sientes hoy?</label>
+              <select id="q1">
+                <option value="">Selecciona...</option>
+                <option value="bajo_animo">Triste / Desanimado</option>
+                <option value="sin_energia">Cansado / Sin energía</option>
+                <option value="estresado">Estresado o saturado</option>
+                <option value="bien">Con ganas de mejorar</option>
+              </select>
+            </div>
+
+            <div class="test-question">
+              <label>¿Qué deseas mejorar?</label>
+              <select id="q2">
+                <option value="">Selecciona...</option>
+                <option value="amor_propio">Amor propio / Autoestima</option>
+                <option value="energia">Energía / Vitalidad</option>
+                <option value="riqueza">Abundancia / Dinero</option>
+                <option value="disciplina">Disciplina / Hábitos</option>
+              </select>
+            </div>
+
+            <div class="phrase-form-actions" style="margin-top: 30px;">
+              <button type="button" class="animated-button magic-button" onclick="runMotivationTest()">✨ Ver Resultado</button>
+            </div>
+          </form>
+
+          <div id="testResult" class="phrase-display" style="display:none; margin-top: 30px;">
+            <p id="testResultText" class="current-phrase"></p>
+            <button class="animated-button" onclick="resetMotivationTest()" style="margin-top: 18px;">🔄 Volver a intentar</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="ia" class="screen">
+        <div class="chat-container">
+          <h1 class="neon-text">💬 Coach Motivacional</h1>
+          <p style="text-align: center; color: #fcd5ce; margin-bottom: 20px;">Chatea con Colver, tu asistente emocional personal</p>
+          
+          <!-- Área de chat -->
+          <div class="chat-area" id="chatArea">
+            <div class="chat-message bot-message">
+              <div class="message-content">
+                <div class="bot-avatar">🤖</div>
+                <div class="message-text">
+                  ¡Hola! Soy Colver, tu coach motivacional personal. ¿Cómo te sientes hoy? Estoy aquí para ayudarte a superar cualquier obstáculo y encontrar tu motivación interior. 💪✨
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contenedor de entrada -->
+          <div class="chat-input-container">
+            <textarea 
+              id="chatInput" 
+              class="chat-input" 
+              placeholder="¿Cómo te sientes hoy?"
+              maxlength="500"
+            ></textarea>
+            <button class="chat-send-btn" id="sendChatBtn">
+              <span>📤</span>
+            </button>
+          </div>
+          
+          <!-- Botones de control del chat -->
+          <div class="chat-controls">
+            <button class="animated-button" id="clearChatBtn" onclick="clearChatHistory()">
+              🗑️ Limpiar Historial
+            </button>
+          </div>
+          
+          <!-- Indicador de carga -->
+          <div class="chat-loading" id="chatLoading" style="display: none;">
+            <div class="loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span>Colver está pensando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tab-navigator">
+      <button class="tab-item active" data-screen="home" aria-label="Inicio">
+        <div class="tab-icon">🏠</div>
+        <span>Inicio</span>
+      </button>
+      <button class="tab-item" data-screen="frases" aria-label="Frases">
+        <div class="tab-icon">📝</div>
+        <span>Frases</span>
+      </button>
+      <button class="tab-item" data-screen="favoritos" aria-label="Favoritos">
+        <div class="tab-icon">⭐</div>
+        <span>Favoritos</span>
+      </button>
+      <button class="tab-item" data-screen="explorar" aria-label="Explorar">
+        <div class="tab-icon">🔍</div>
+        <span>Explorar</span>
+      </button>
+      <button class="tab-item" data-screen="nueva-frase" aria-label="Nueva frase">
+        <div class="tab-icon">➕</div>
+        <span>Nueva</span>
+      </button>
+      <button class="tab-item" data-screen="muro" aria-label="Muro motivacional">
+        <div class="tab-icon">✨</div>
+        <span>Muro</span>
+      </button>
+      <button class="tab-item" data-screen="test" aria-label="Test">
+        <div class="tab-icon">🧠</div>
+        <span>Test</span>
+      </button>
+      <button class="tab-item" data-screen="ia" aria-label="Asistente IA">
+        <div class="tab-icon">🤖</div>
+        <span>IA</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="./js/index.js"></script>
+  <script>
+    document.addEventListener('deviceready', function() {
+        // Tu código que usa window.TTS aquí
+    }, false);
+  </script>
+</body>
+</html>

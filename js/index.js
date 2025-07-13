@@ -1,5 +1,5 @@
 // Variables globales para el estado de la aplicación
-const fullText = 'Bienvenido a Mi Apk/Ser:D';
+const fullText = 'Bienvenido a MotivApp';
 let displayText = '';
 let isDeleting = false;
 let currentIndex = 0;
@@ -7,6 +7,36 @@ let typingInterval;
 let currentPhrase = '';
 let favorites = [];
 let customPhrases = [];
+
+/**
+ * Función personalizada para mostrar SweetAlert con el tema de MotivApp
+ * @param {string} title - Título del mensaje
+ * @param {string} text - Texto del mensaje (opcional)
+ * @param {string} icon - Tipo de icono (success, error, warning, info)
+ */
+function showMotivAppAlert(title, text = '', icon = 'success') {
+    Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        draggable: true,
+        background: 'linear-gradient(135deg, #2c003e, #1a001a)',
+        color: '#fcd5ce',
+        confirmButtonColor: '#ff85cc',
+        confirmButtonText: '✨ Perfecto',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        customClass: {
+            popup: 'swal-motivapp',
+            title: 'swal-title-motivapp',
+            confirmButton: 'swal-btn-motivapp'
+        }
+    });
+}
 
 // Frases motivacionales categorizadas
 const categorizedPhrases = {
@@ -57,113 +87,99 @@ const categorizedPhrases = {
         "Mi voluntad es inquebrantable.",
         "Soy el dueño de mis hábitos y mi destino.",
         "La constancia me lleva al éxito."
+    ],
+    preguntas: [
+        "¿Qué energía, espacio, conciencia y elección puedo ser para recibir más dinero de lo que jamás imaginé, con total facilidad?",
+        "¿Qué tomaría para que el dinero me busque a mí como yo busco el café en las mañanas?",
+        "Si no tuviera ningún punto de vista sobre el dinero, ¿cuánto podría recibir hoy?",
+        "¿Y si el dinero fuera mi amante, cómo le estaría tratando?",
+        "¿Qué está creando escasez en mi vida que podría soltar ahora mismo?",
+        "¿Qué es el dinero para mí... y de quién aprendí eso?",
+        "¿Qué juicios estoy usando para limitar el dinero que puedo elegir?",
+        "¿Qué me impide reconocer que ya soy una energía de riqueza?",
+        "¿Cuánto más dinero podría tener si me atreviera a disfrutar sin culpa?",
+        "¿Qué posibilidades infinitas con el dinero están disponibles hoy que aún no he reconocido?",
+        "¿Qué debo dejar de controlar para que el dinero fluya con más gozo?",
+        "¿Estoy dispuesta a recibir dinero de formas inesperadas y sin esfuerzo?",
+        "¿Qué estoy evitando o defendiendo que me impide ser millonaria?",
+        "¿Qué más es posible con el dinero que nunca nadie me enseñó?",
+        "¿Qué pasaría si dejara de rechazar ser rica?",
+        "¿Y si el dinero no fuera un problema… qué elegiría hoy?",
+        "¿Qué estoy copiando de mi familia sobre el dinero que ya no me sirve?",
+        "¿Qué tomaría para que el dinero se muestre hoy con facilidad, alegría y gloria?",
+        "¿Qué nivel de gratitud y gozo puedo ser hoy para duplicar mis ingresos?",
+        "¿Cuánto dinero estoy dispuesto(a) a tener sin perder mi esencia?",
+        "¿Qué conciencia del dinero estoy listo(a) para recibir hoy?",
+        "¿Qué energía puedo ser para atraer clientes que me paguen con gozo?",
+        "¿Qué más puedo vender, crear o elegir que sea una contribución financiera para mí y para el mundo?",
+        "¿Qué estoy haciendo más difícil de lo que realmente es con el dinero?",
+        "¿Qué parte de mi magia estoy ignorando que crearía más dinero de inmediato?",
+        "¿Qué me impide ser el imán que realmente soy para el dinero?",
+        "¿Qué tomaría para elegir más dinero sin tener que justificarlo?",
+        "¿Y si el dinero no fuera serio ni pesado, cómo sería?",
+        "¿Qué riqueza energética está disponible para mí ahora mismo?",
+        "¿Qué puedo ser o hacer hoy que cree más dinero ahora y para toda la eternidad?",
+        "¿Qué pasaría si me permitiera ser completamente feliz sin condiciones?",
+        "¿Qué estoy defendiendo que me impide recibir todo el amor que merezco?",
+        "¿Qué tomaría para que mi confianza en mí mismo(a) fuera inquebrantable?",
+        "¿Qué estoy evitando que me impide brillar con toda mi luz?",
+        "¿Qué pasaría si dejara de buscar la aprobación de otros?",
+        "¿Qué energía puedo ser para atraer relaciones saludables y amorosas?",
+        "¿Qué estoy creyendo sobre mí que ya no me sirve?",
+        "¿Qué tomaría para que mi creatividad fluya sin límites?",
+        "¿Qué pasaría si confiara completamente en mi intuición?",
+        "¿Qué estoy resistiendo que me impide crecer y evolucionar?",
+        "¿Qué energía puedo ser para manifestar mis sueños más profundos?",
+        "¿Qué tomaría para que mi paz interior fuera inquebrantable?",
+        "¿Qué pasaría si me permitiera ser vulnerable sin miedo?",
+        "¿Qué estoy ocultando que me impide ser auténtico(a)?",
+        "¿Qué energía puedo ser para atraer oportunidades extraordinarias?",
+        "¿Qué tomaría para que mi propósito de vida fuera claro y poderoso?",
+        "¿Qué pasaría si me permitiera fallar sin juzgarme?",
+        "¿Qué estoy esperando para ser la mejor versión de mí mismo(a)?",
+        "¿Qué energía puedo ser para transformar mis miedos en poder?",
+        "¿Qué tomaría para que mi gratitud fuera tan profunda que transforme mi realidad?",
+        "¿Qué pasaría si me permitiera recibir sin sentir culpa?",
+        "¿Qué estoy creando en mi vida que ya no me sirve?",
+        "¿Qué energía puedo ser para atraer abundancia en todas las áreas de mi vida?"
     ]
 };
 
 // Frases motivacionales predefinidas (para compatibilidad)
 const phrases = [
-    "¿Qué energía necesito para recibir más dinero?",
-    "El dinero fluye hacia mí de manera natural y abundante.",
-    "Soy un imán para la riqueza y la prosperidad.",
-    "Cada día mi abundancia financiera se multiplica.",
-    "Merezco tener todo el dinero que deseo.",
-    "La riqueza es mi estado natural de ser.",
-    "Atraigo oportunidades de dinero constantemente.",
-    "Mi mente está programada para la abundancia.",
-    "El universo conspira para mi éxito financiero.",
-    "Soy digno de recibir grandes cantidades de dinero.",
-    "La prosperidad económica es mi destino.",
-    "Me amo y me acepto tal como soy.",
-    "Soy suficiente y completo en este momento.",
-    "Merezco amor, respeto y felicidad.",
-    "Mi valor no depende de las opiniones de otros.",
-    "Soy único, especial y valioso.",
-    "Me trato con la misma bondad que trato a otros.",
-    "Soy digno de recibir todo lo bueno de la vida.",
-    "Mi autoestima crece cada día más.",
-    "Me permito ser feliz y disfrutar de la vida.",
-    "Soy mi mejor amigo y mi mayor apoyo.",
-    "Mi energía es ilimitada y poderosa.",
-    "Me siento lleno de vitalidad y fuerza.",
-    "Cada mañana me despierto con energía renovada.",
-    "Mi cuerpo está lleno de energía positiva.",
-    "La energía del universo fluye a través de mí.",
-    "Soy una fuente inagotable de energía.",
-    "Mi entusiasmo y pasión me impulsan hacia adelante.",
-    "Me siento energizado y motivado todo el día.",
-    "La energía positiva me rodea y me protege.",
-    "Soy un canal de energía divina y poderosa.",
-    "Soy disciplinado y comprometido con mis metas.",
-    "Cada día me acerco más a mis objetivos.",
-    "Mi determinación es más fuerte que cualquier obstáculo.",
-    "Mantengo el enfoque en lo que realmente importa.",
-    "Soy consistente en mis acciones y decisiones.",
-    "La disciplina es mi superpoder.",
-    "Me comprometo con la excelencia en todo lo que hago.",
-    "Mi voluntad es inquebrantable.",
-    "Soy el dueño de mis hábitos y mi destino.",
-    "La constancia me lleva al éxito."
+    "¿Qué energía, espacio, conciencia y elección puedo ser para recibir más dinero de lo que jamás imaginé, con total facilidad?",
+    "¿Qué tomaría para que el dinero me busque a mí como yo busco el café en las mañanas?",
+    "Si no tuviera ningún punto de vista sobre el dinero, ¿cuánto podría recibir hoy?",
+    "¿Y si el dinero fuera mi amante, cómo le estaría tratando?",
+    "¿Qué está creando escasez en mi vida que podría soltar ahora mismo?",
+    "¿Qué es el dinero para mí... y de quién aprendí eso?",
+    "¿Qué juicios estoy usando para limitar el dinero que puedo elegir?",
+    "¿Qué me impide reconocer que ya soy una energía de riqueza?",
+    "¿Cuánto más dinero podría tener si me atreviera a disfrutar sin culpa?",
+    "¿Qué posibilidades infinitas con el dinero están disponibles hoy que aún no he reconocido?",
+    "¿Qué debo dejar de controlar para que el dinero fluya con más gozo?",
+    "¿Estoy dispuesta a recibir dinero de formas inesperadas y sin esfuerzo?",
+    "¿Qué estoy evitando o defendiendo que me impide ser millonaria?",
+    "¿Qué más es posible con el dinero que nunca nadie me enseñó?",
+    "¿Qué pasaría si dejara de rechazar ser rica?",
+    "¿Y si el dinero no fuera un problema… qué elegiría hoy?",
+    "¿Qué estoy copiando de mi familia sobre el dinero que ya no me sirve?",
+    "¿Qué tomaría para que el dinero se muestre hoy con facilidad, alegría y gloria?",
+    "¿Qué nivel de gratitud y gozo puedo ser hoy para duplicar mis ingresos?",
+    "¿Cuánto dinero estoy dispuesto(a) a tener sin perder mi esencia?",
+    "¿Qué conciencia del dinero estoy listo(a) para recibir hoy?",
+    "¿Qué energía puedo ser para atraer clientes que me paguen con gozo?",
+    "¿Qué más puedo vender, crear o elegir que sea una contribución financiera para mí y para el mundo?",
+    "¿Qué estoy haciendo más difícil de lo que realmente es con el dinero?",
+    "¿Qué parte de mi magia estoy ignorando que crearía más dinero de inmediato?",
+    "¿Qué me impide ser el imán que realmente soy para el dinero?",
+    "¿Qué tomaría para elegir más dinero sin tener que justificarlo?",
+    "¿Y si el dinero no fuera serio ni pesado, cómo sería?",
+    "¿Qué riqueza energética está disponible para mí ahora mismo?",
+    "¿Qué puedo ser o hacer hoy que cree más dinero ahora y para toda la eternidad?"
 ];
 
-const motivationalPhrases = [
-    "Tú eres más fuerte de lo que crees.",
-    "Cada día es una nueva oportunidad para brillar.",
-    "Tu potencial es ilimitado.",
-    "Eres capaz de lograr todo lo que te propongas.",
-    "La confianza en ti mismo es tu superpoder.",
-    "Cada paso que das te acerca a tus sueños.",
-    "Tu determinación inspira a otros.",
-    "Eres un ser extraordinario.",
-    "Tu luz interior ilumina el camino de otros.",
-    "Eres más valiente de lo que crees."
-];
 
-/**
- * Inicia el efecto de máquina de escribir en el texto de bienvenida
- * con animación de cursor y ciclo de escritura/borrado.
- */
-function startTypingCycle() {
-    const typingElement = document.getElementById('typingText');
-    if (!typingElement) return;
-    
-    const delay = 150;
-    
-    // Agregar cursor inicial
-    typingElement.innerHTML = '<span class="cursor">|</span>';
-    
-    typingInterval = setInterval(() => {
-        if (!isDeleting) {
-            // Efecto de escritura
-            displayText = fullText.substring(0, currentIndex + 1);
-            currentIndex++;
-            
-            if (currentIndex === fullText.length) {
-                // Pausa al completar el texto
-                clearInterval(typingInterval);
-                setTimeout(() => {
-                    isDeleting = true;
-                    startTypingCycle();
-                }, 2500);
-            }
-        } else {
-            // Efecto de borrado
-            displayText = fullText.substring(0, currentIndex - 1);
-            currentIndex--;
-            
-            if (currentIndex === 0) {
-                // Reinicia el ciclo
-                clearInterval(typingInterval);
-                isDeleting = false;
-                setTimeout(() => {
-                    startTypingCycle();
-                }, 1000);
-            }
-        }
-        
-        // Actualizar el elemento con el cursor
-        typingElement.innerHTML = displayText + '<span class="cursor">|</span>';
-    }, delay);
-}
 
 /**
  * Obtiene una frase aleatoria de las disponibles y la muestra con animación
@@ -188,6 +204,9 @@ function getRandomPhrase() {
         phraseElement.textContent = `"${randomPhrase}"`;
         hideEnergyOverlay();
         speakText(randomPhrase);
+        
+        // Mostrar el área de respuesta después de revelar la pregunta
+        showResponseArea();
         
         // Efecto de confeti si está disponible
         if (typeof confetti === 'function') {
@@ -245,14 +264,7 @@ function speakText(text) {
     }
 }
 
-/**
- * Detiene la reproducción de voz actual
- */
-function stopSpeaking() {
-    if ('speechSynthesis' in window) {
-        speechSynthesis.cancel();
-    }
-}
+
 
 /**
  * Agrega la frase actual a favoritos con feedback visual
@@ -264,6 +276,9 @@ function addToFavorites() {
         favorites.push(currentPhrase);
         updateFavoritesList();
         saveFavoritesToStorage();
+        
+        // SweetAlert para confirmar guardado
+        showMotivAppAlert("Guardado!", "", "success");
         
         // Feedback visual
         const favoriteButton = document.querySelector('.favorite-button');
@@ -284,7 +299,7 @@ function addToFavorites() {
             });
         }
     } else {
-        alert('Esta frase ya está en tus favoritos');
+        showMotivAppAlert("Ya en favoritos", "Esta frase ya está en tus favoritos", "warning");
     }
 }
 
@@ -344,9 +359,33 @@ function updateFavoritesList() {
  * @param {number} index - Índice de la frase a eliminar
  */
 function removeFavorite(index) {
-    favorites.splice(index, 1);
-    updateFavoritesList();
-    saveFavoritesToStorage();
+    Swal.fire({
+        title: "¿Estás Seguro?",
+        text: "¿Quieres eliminar esta frase de favoritos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "¡Sí, Eliminar!",
+        cancelButtonText: "No, Cancelar!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            favorites.splice(index, 1);
+            updateFavoritesList();
+            saveFavoritesToStorage();
+            
+            Swal.fire({
+                title: "¡Eliminado!",
+                text: "La frase ha sido eliminada de favoritos.",
+                icon: "success"
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+                title: "Cancelado",
+                text: "La frase se mantiene en favoritos :)",
+                icon: "error"
+            });
+        }
+    });
 }
 
 /**
@@ -356,8 +395,12 @@ function saveFavoritesToStorage() {
     try {
         localStorage.setItem('motivationalFavorites', JSON.stringify(favorites));
         localStorage.setItem('customPhrases', JSON.stringify(customPhrases));
+        
+        // SweetAlert para confirmar guardado
+        showMotivAppAlert("Guardado!", "", "success");
     } catch (e) {
         console.log('Error al guardar en localStorage:', e);
+        showMotivAppAlert("Error al guardar", "No se pudo guardar en el almacenamiento", "error");
     }
 }
 
@@ -398,17 +441,7 @@ function hideLoadingScreen() {
     }
 }
 
-/**
- * Muestra u oculta el estado de carga global
- * @param {boolean} loading - True para mostrar carga, false para ocultar
- */
-function setLoading(loading) {
-    if (loading) {
-        document.body.classList.add('app-loading');
-    } else {
-        document.body.classList.remove('app-loading');
-    }
-}
+
 
 /**
  * Muestra un overlay de energía con animación
@@ -456,6 +489,302 @@ function hideEnergyOverlay() {
 }
 
 /**
+ * Muestra el área de respuesta con animación
+ */
+function showResponseArea() {
+    const responseArea = document.getElementById('responseArea');
+    if (responseArea) {
+        responseArea.style.display = 'block';
+        // Limpiar el área de respuesta
+        const userResponse = document.getElementById('userResponse');
+        if (userResponse) {
+            userResponse.value = '';
+            updateResponseCharCount();
+        }
+    }
+}
+
+/**
+ * Oculta el área de respuesta
+ */
+function hideResponseArea() {
+    const responseArea = document.getElementById('responseArea');
+    if (responseArea) {
+        responseArea.style.display = 'none';
+    }
+}
+
+/**
+ * Actualiza el contador de caracteres de la respuesta
+ */
+function updateResponseCharCount() {
+    const userResponse = document.getElementById('userResponse');
+    const charCount = document.getElementById('responseCharCount');
+    const counter = document.querySelector('.response-character-counter');
+    
+    if (userResponse && charCount && counter) {
+        const count = userResponse.value.length;
+        charCount.textContent = count;
+        
+        // Cambiar color según el límite
+        counter.classList.remove('warning', 'danger');
+        if (count > 400) {
+            counter.classList.add('danger');
+        } else if (count > 350) {
+            counter.classList.add('warning');
+        }
+    }
+}
+
+/**
+ * Guarda la respuesta del usuario
+ */
+function saveUserResponse() {
+    const userResponse = document.getElementById('userResponse');
+    if (!userResponse || !userResponse.value.trim() || !currentPhrase) return;
+    
+    const response = userResponse.value.trim();
+    
+    // Crear objeto con pregunta y respuesta
+    const questionResponse = {
+        question: currentPhrase,
+        response: response,
+        date: new Date().toISOString(),
+        id: Date.now()
+    };
+    
+    // Obtener respuestas guardadas del localStorage
+    let savedResponses = [];
+    try {
+        const saved = localStorage.getItem('userResponses');
+        if (saved) {
+            savedResponses = JSON.parse(saved);
+        }
+    } catch (e) {
+        console.log('Error al cargar respuestas guardadas:', e);
+    }
+    
+    // Agregar nueva respuesta
+    savedResponses.push(questionResponse);
+    
+    // Guardar en localStorage
+    try {
+        localStorage.setItem('userResponses', JSON.stringify(savedResponses));
+        
+        // SweetAlert para confirmar guardado
+        showMotivAppAlert("Guardado!", "", "success");
+        
+        // Feedback visual
+        showFeedback('Respuesta guardada exitosamente ✨', 'success');
+        
+        // Limpiar el área de respuesta
+        userResponse.value = '';
+        updateResponseCharCount();
+        
+        // Efecto de confeti
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 50,
+                spread: 60,
+                origin: { y: 0.6 }
+            });
+        }
+    } catch (e) {
+        showMotivAppAlert("Error al guardar", "No se pudo guardar la respuesta", "error");
+        showFeedback('Error al guardar la respuesta', 'error');
+        console.log('Error al guardar respuesta:', e);
+    }
+}
+
+/**
+ * Reproduce la respuesta del usuario en voz alta
+ */
+function speakUserResponse() {
+    const userResponse = document.getElementById('userResponse');
+    if (!userResponse || !userResponse.value.trim()) {
+        showFeedback('No hay respuesta para reproducir', 'warning');
+        return;
+    }
+    
+    speakText(userResponse.value.trim());
+}
+
+/**
+ * Limpia el área de respuesta
+ */
+function clearUserResponse() {
+    Swal.fire({
+        title: "¿Estás Seguro?",
+        text: "¿Quieres limpiar tu respuesta?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "¡Sí, Limpiar!",
+        cancelButtonText: "No, Cancelar!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const userResponse = document.getElementById('userResponse');
+            if (userResponse) {
+                userResponse.value = '';
+                updateResponseCharCount();
+                showFeedback('Respuesta limpiada', 'info');
+            }
+            
+            Swal.fire({
+                title: "¡Limpiado!",
+                text: "Tu respuesta ha sido eliminada.",
+                icon: "success"
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+                title: "Cancelado",
+                text: "Tu respuesta se mantiene :)",
+                icon: "error"
+            });
+        }
+    });
+}
+
+/**
+ * Cambia entre las pestañas de favoritos y respuestas
+ * @param {string} tabType - Tipo de pestaña ('favorites' o 'responses')
+ */
+function switchFavoritesTab(tabType) {
+    // Actualizar botones de navegación
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelector(`[data-tab="${tabType}"]`)?.classList.add('active');
+    
+    // Mostrar sección correspondiente
+    const favoritesSection = document.getElementById('favoritesSection');
+    const responsesSection = document.getElementById('responsesSection');
+    
+    if (tabType === 'favorites') {
+        favoritesSection?.classList.add('active');
+        responsesSection?.classList.remove('active');
+    } else if (tabType === 'responses') {
+        favoritesSection?.classList.remove('active');
+        responsesSection?.classList.add('active');
+        loadUserResponses();
+    }
+}
+
+/**
+ * Carga y muestra las respuestas guardadas del usuario
+ */
+function loadUserResponses() {
+    const responsesList = document.getElementById('responsesList');
+    if (!responsesList) return;
+    
+    // Obtener respuestas guardadas
+    let savedResponses = [];
+    try {
+        const saved = localStorage.getItem('userResponses');
+        if (saved) {
+            savedResponses = JSON.parse(saved);
+        }
+    } catch (e) {
+        console.log('Error al cargar respuestas:', e);
+    }
+    
+    responsesList.innerHTML = '';
+    
+    if (savedResponses.length === 0) {
+        responsesList.innerHTML = `
+            <div class="no-responses">
+                <div class="icon">💭</div>
+                <p>No tienes respuestas guardadas aún.</p>
+                <p>¡Responde a las preguntas para verlas aquí!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Mostrar respuestas en orden cronológico inverso (más recientes primero)
+    savedResponses.reverse().forEach(response => {
+        const responseItem = document.createElement('div');
+        responseItem.className = 'response-item';
+        
+        const date = new Date(response.date);
+        const formattedDate = date.toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
+        responseItem.innerHTML = `
+            <div class="response-question">"${response.question}"</div>
+            <div class="response-text">${response.response}</div>
+            <div class="response-date">${formattedDate}</div>
+            <div class="response-actions">
+                <button class="animated-button speak-button" onclick="speakText('${response.response.replace(/'/g, "\\'")}')">
+                    🔊 Escuchar
+                </button>
+                <button class="animated-button" onclick="deleteResponse(${response.id})">
+                    🗑️ Eliminar
+                </button>
+            </div>
+        `;
+        
+        responsesList.appendChild(responseItem);
+    });
+}
+
+/**
+ * Elimina una respuesta guardada
+ * @param {number} responseId - ID de la respuesta a eliminar
+ */
+function deleteResponse(responseId) {
+    Swal.fire({
+        title: "¿Estás Seguro?",
+        text: "¿Quieres eliminar esta respuesta?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "¡Sí, Eliminar!",
+        cancelButtonText: "No, Cancelar!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            try {
+                const saved = localStorage.getItem('userResponses');
+                if (saved) {
+                    let responses = JSON.parse(saved);
+                    responses = responses.filter(response => response.id !== responseId);
+                    localStorage.setItem('userResponses', JSON.stringify(responses));
+                    
+                    showFeedback('Respuesta eliminada', 'success');
+                    loadUserResponses(); // Recargar la lista
+                }
+                
+                Swal.fire({
+                    title: "¡Eliminado!",
+                    text: "La respuesta ha sido eliminada.",
+                    icon: "success"
+                });
+            } catch (e) {
+                showFeedback('Error al eliminar la respuesta', 'error');
+                console.log('Error al eliminar respuesta:', e);
+                
+                Swal.fire({
+                    title: "Error",
+                    text: "No se pudo eliminar la respuesta.",
+                    icon: "error"
+                });
+            }
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+                title: "Cancelado",
+                text: "La respuesta se mantiene guardada :)",
+                icon: "error"
+            });
+        }
+    });
+}
+
+/**
  * Configura los event listeners principales de la aplicación
  */
 function setupEventListeners() {
@@ -471,6 +800,22 @@ function setupEventListeners() {
     
     // Botón de agregar a favoritos
     document.getElementById('addFavoriteBtn')?.addEventListener('click', addToFavorites);
+    
+    // Event listeners para el área de respuesta
+    document.getElementById('saveResponseBtn')?.addEventListener('click', saveUserResponse);
+    document.getElementById('speakResponseBtn')?.addEventListener('click', speakUserResponse);
+    document.getElementById('clearResponseBtn')?.addEventListener('click', clearUserResponse);
+    
+    // Contador de caracteres para la respuesta
+    document.getElementById('userResponse')?.addEventListener('input', updateResponseCharCount);
+    
+    // Navegación entre favoritos y respuestas
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabType = this.getAttribute('data-tab');
+            switchFavoritesTab(tabType);
+        });
+    });
     
     // Navegación por pestañas
     document.querySelectorAll('.tab-item').forEach(item => {
@@ -497,13 +842,15 @@ function showScreen(screenId) {
             currentActive.classList.remove('fade-out');
             if (newScreen) newScreen.classList.add('active');
 
+            // Ocultar área de respuesta si no estamos en la pantalla de frases
+            if (screenId !== 'frases') {
+                hideResponseArea();
+            }
+
             // Inicialización específica de pantallas
             switch (screenId) {
                 case 'muro':
                     createMotivationWall();
-                    break;
-                case 'calendario':
-                    renderSimpleCalendar();
                     break;
                 case 'nueva-frase':
                     initNewPhrase();
@@ -513,6 +860,10 @@ function showScreen(screenId) {
                     break;
                 case 'ia':
                     initChat();
+                    break;
+                case 'favoritos':
+                    // Asegurar que la pestaña de favoritos esté activa por defecto
+                    switchFavoritesTab('favorites');
                     break;
             }
         }, 300);
@@ -531,26 +882,22 @@ function showScreen(screenId) {
  * Inicialización principal de la aplicación
  */
 document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar pantalla de carga
-    setLoading(true);
-    
     // Simular carga de recursos
     setTimeout(() => {
         // Cargar datos almacenados
         loadFromStorage();
-        
-        // Iniciar componentes
-        startTypingCycle();
-        setupEventListeners();
-        
-        // Inicializar calendario si estamos en esa pantalla
-        if (document.querySelector('#calendario.active')) {
-            renderSimpleCalendar();
+        // Mostrar el texto de bienvenida directamente y aplicar la animación fadeInText
+        const typingElement = document.getElementById('typingText');
+        if (typingElement) {
+            typingElement.textContent = fullText;
+            typingElement.style.opacity = '0';
+            typingElement.style.animation = 'none';
+            // Forzar reflow para reiniciar la animación
+            void typingElement.offsetWidth;
+            typingElement.style.animation = 'fadeInText 1s ease-in-out forwards';
         }
-        
-        // Ocultar pantalla de carga
+        setupEventListeners();
         hideLoadingScreen();
-        setLoading(false);
     }, 1500);
 });
 /**
@@ -630,7 +977,8 @@ function getCategoryDisplayName(category) {
         riqueza: '💰 Riqueza y Prosperidad',
         amor_propio: '💖 Amor Propio y Autoestima',
         energia: '⚡ Energía y Vitalidad',
-        disciplina: '📈 Disciplina y Constancia'
+        disciplina: '📈 Disciplina y Constancia',
+        preguntas: '❓ Preguntas Poderosas'
     };
     return displayNames[category] || category;
 }
@@ -645,6 +993,9 @@ function addToFavoritesFromExplore(phrase) {
         updateFavoritesList();
         saveFavoritesToStorage();
         
+        // SweetAlert para confirmar guardado
+        showMotivAppAlert("Guardado!", "", "success");
+        
         // Feedback visual
         showFeedback('Frase agregada a favoritos!', 'success');
         
@@ -658,6 +1009,7 @@ function addToFavoritesFromExplore(phrase) {
             });
         }
     } else {
+        showMotivAppAlert("Ya en favoritos", "Esta frase ya está en tus favoritos", "warning");
         showFeedback('Esta frase ya está en tus favoritos', 'warning');
     }
 }
@@ -779,6 +1131,9 @@ function saveNewPhrase() {
     document.getElementById('charCount').textContent = '0';
     document.getElementById('charCount').className = 'character-counter';
 
+    // SweetAlert para confirmar guardado
+    showMotivAppAlert("Guardado!", "", "success");
+
     // Feedback de éxito
     showFeedback('¡Frase guardada exitosamente!', 'success');
 
@@ -813,15 +1168,39 @@ function previewPhrase() {
  * Limpia el formulario de nueva frase.
  */
 function clearPhraseForm() {
-    const input = document.getElementById('newPhraseInput');
-    const charCount = document.getElementById('charCount');
-    
-    input.value = '';
-    charCount.textContent = '0';
-    charCount.className = 'character-counter';
-    input.focus();
-    
-    showFeedback('Formulario limpiado.', 'info');
+    Swal.fire({
+        title: "¿Estás Seguro?",
+        text: "¿Quieres limpiar el formulario?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "¡Sí, Limpiar!",
+        cancelButtonText: "No, Cancelar!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const input = document.getElementById('newPhraseInput');
+            const charCount = document.getElementById('charCount');
+            
+            input.value = '';
+            charCount.textContent = '0';
+            charCount.className = 'character-counter';
+            input.focus();
+            
+            showFeedback('Formulario limpiado.', 'info');
+            
+            Swal.fire({
+                title: "¡Limpiado!",
+                text: "El formulario ha sido limpiado.",
+                icon: "success"
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+                title: "Cancelado",
+                text: "El formulario se mantiene sin cambios :)",
+                icon: "error"
+            });
+        }
+    });
 }
 
 /**
@@ -870,6 +1249,9 @@ function addCustomToFavorites(phrase) {
         updateFavoritesList();
         saveFavoritesToStorage();
         
+        // SweetAlert para confirmar guardado
+        showMotivAppAlert("Guardado!", "", "success");
+        
         showFeedback('Frase agregada a favoritos!', 'success');
         
         // Efecto de estrella
@@ -882,6 +1264,7 @@ function addCustomToFavorites(phrase) {
             });
         }
     } else {
+        showMotivAppAlert("Ya en favoritos", "Esta frase ya está en tus favoritos", "warning");
         showFeedback('Esta frase ya está en tus favoritos', 'warning');
     }
 }
@@ -971,13 +1354,35 @@ function updateCustomPhrase(index) {
 function deleteCustomPhrase(index) {
     const phrase = customPhrases[index];
     
-    if (confirm(`¿Estás seguro de que quieres eliminar la frase:\n"${phrase}"?`)) {
-        customPhrases.splice(index, 1);
-        saveCustomPhrasesToStorage();
-        updateCustomPhrasesList();
-        
-        showFeedback('Frase eliminada exitosamente.', 'success');
-    }
+    Swal.fire({
+        title: "¿Estás Seguro?",
+        text: `¿Quieres eliminar la frase:\n"${phrase}"?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "¡Sí, Eliminar!",
+        cancelButtonText: "No, Cancelar!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            customPhrases.splice(index, 1);
+            saveCustomPhrasesToStorage();
+            updateCustomPhrasesList();
+            
+            showFeedback('Frase eliminada exitosamente.', 'success');
+            
+            Swal.fire({
+                title: "¡Eliminado!",
+                text: "La frase personalizada ha sido eliminada.",
+                icon: "success"
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+                title: "Cancelado",
+                text: "La frase se mantiene en tu colección :)",
+                icon: "error"
+            });
+        }
+    });
 }
 
 /**
@@ -986,8 +1391,12 @@ function deleteCustomPhrase(index) {
 function saveCustomPhrasesToStorage() {
     try {
         localStorage.setItem('customPhrases', JSON.stringify(customPhrases));
+        
+        // SweetAlert para confirmar guardado
+        showMotivAppAlert("Guardado!", "", "success");
     } catch (e) {
         console.log('Error al guardar frases personalizadas:', e);
+        showMotivAppAlert("Error al guardar", "No se pudieron guardar las frases personalizadas", "error");
     }
 }
 
@@ -1011,10 +1420,7 @@ let tarotCards = [];
 let selectedCard = null;
 let currentRevealedPhrase = '';
 
-// Variables para el calendario
-let currentDate = new Date();
-let selectedDate = null;
-let dailyMotivations = {};
+
 
 // Variables para el chat
 let chatMessages = [];
@@ -1022,26 +1428,16 @@ const OPENROUTER_API_KEY = 'sk-or-v1-23f3d1cd048ea8b52d879d72802326d54132c0e7f5f
 
 // Frases místicas para las cartas de tarot
 const mysticalPhrases = [
-    "El universo conspira a tu favor en este momento.",
-    "Tu energía positiva atrae grandes bendiciones.",
-    "La sabiduría interior te guía hacia el éxito.",
-    "Cada paso que das te acerca a tus sueños.",
-    "Tu determinación es más fuerte que cualquier obstáculo.",
-    "La abundancia fluye hacia ti naturalmente.",
-    "Tu luz interior ilumina el camino de otros.",
-    "El amor propio es tu superpoder más valioso.",
-    "La confianza en ti mismo abre todas las puertas.",
-    "Tu potencial es ilimitado y extraordinario.",
-    "La gratitud multiplica tus bendiciones.",
-    "Cada día es una nueva oportunidad para brillar.",
-    "Tu intuición te guía hacia las mejores decisiones.",
-    "La paz interior es tu estado natural.",
-    "Tu creatividad transforma el mundo a tu alrededor.",
-    "La perseverancia te lleva a la cima del éxito.",
-    "Tu bondad regresa multiplicada a tu vida.",
-    "El equilibrio perfecto está dentro de ti.",
-    "Tu valentía inspira a otros a ser mejores.",
-    "La magia del universo trabaja a través de ti."
+    "Tu alma ya conoce el camino. Confía.",
+    "La luna te guía en la oscuridad.",
+    "Estás exactamente donde necesitas estar.",
+    "El universo te protege con su manto estelar.",
+    "Cada decisión te lleva más cerca de tu propósito.",
+    "Hoy es un buen día para comenzar de nuevo.",
+    "El caos es solo el inicio de una gran transformación.",
+    "Estás rodeado de magia invisible.",
+    "Lo que sueñas también te está buscando.",
+    "Permite que lo divino actúe a través de ti."
 ];
 
 /**
@@ -1049,689 +1445,149 @@ const mysticalPhrases = [
  */
 function createMotivationWall() {
     const wallGrid = document.getElementById('wallGrid');
-    const shuffleBtn = document.getElementById('shuffleCardsBtn');
-    const readBtn = document.getElementById('readCardBtn');
-    const saveBtn = document.getElementById('saveCardBtn');
     const backBtn = document.getElementById('backToGridBtn');
-
-    if (!wallGrid || !shuffleBtn || !readBtn || !saveBtn || !backBtn) return;
-
-    // Inicializar cartas
-    initializeTarotCards();
-    
-    // Crear cartas en el grid
-    createTarotGrid();
-    
-    // Event listeners
-    shuffleBtn.addEventListener('click', shuffleTarotCards);
-    readBtn.addEventListener('click', readSelectedCard);
-    saveBtn.addEventListener('click', saveRevealedMessage);
-    backBtn.addEventListener('click', backToGrid);
-}
-
-/**
- * Inicializa las cartas de tarot con frases místicas.
- */
-function initializeTarotCards() {
-    tarotCards = [...mysticalPhrases];
-    shuffleTarotCards();
-}
-
-/**
- * Crea el grid de cartas de tarot.
- */
-function createTarotGrid() {
-    const wallGrid = document.getElementById('wallGrid');
     if (!wallGrid) return;
 
+    wallGrid.classList.remove('reveal-mode');
+    backBtn.style.display = 'none';
     wallGrid.innerHTML = '';
 
-    // Crear 12 cartas (3x4 grid)
-    for (let i = 0; i < 12; i++) {
+    mysticalPhrases.forEach((phrase, i) => {
         const card = document.createElement('div');
-        card.className = 'wall-card';
+        card.classList.add('wall-card');
+
         card.innerHTML = `
-            <div class="card-back-design">
-                <div class="mystical-symbol">✨</div>
-                <div class="card-title">Mensaje Místico</div>
-            </div>
-        `;
-        
-        // Agregar event listener
-        card.onclick = () => selectTarotCard(i);
-        wallGrid.appendChild(card);
-    }
-}
-
-/**
- * Selecciona una carta de tarot y la revela en el centro.
- * @param {number} cardIndex - Índice de la carta seleccionada.
- */
-function selectTarotCard(cardIndex) {
-    const wallGrid = document.getElementById('wallGrid');
-    const cards = document.querySelectorAll('.wall-card');
-    const backBtn = document.getElementById('backToGridBtn');
-
-    if (!wallGrid || !cards[cardIndex] || !backBtn) return;
-
-    // Remover selección previa
-    cards.forEach(card => {
-        card.classList.remove('selected');
-    });
-
-    // Seleccionar nueva carta
-    cards[cardIndex].classList.add('selected');
-    selectedCard = cardIndex;
-    currentRevealedPhrase = tarotCards[cardIndex];
-
-    // Activar modo revelación
-    wallGrid.classList.add('reveal-mode');
-    
-    // Ocultar todas las cartas excepto la seleccionada
-    cards.forEach((card, index) => {
-        if (index !== cardIndex) {
-            card.classList.add('hidden');
-        } else {
-            card.classList.add('revealing');
-            // Agregar event listener para revelar la carta
-            card.onclick = () => revealSelectedCard();
-        }
-    });
-
-    // Mover carta seleccionada al centro
-    setTimeout(() => {
-        cards[cardIndex].style.position = 'absolute';
-        cards[cardIndex].style.top = '50%';
-        cards[cardIndex].style.left = '50%';
-        cards[cardIndex].style.transform = 'translate(-50%, -50%) scale(1.5)';
-        cards[cardIndex].style.zIndex = '100';
-    }, 500);
-
-    // Mostrar botón de volver atrás
-    setTimeout(() => {
-        backBtn.style.display = 'block';
-    }, 1000);
-
-    // Ocultar controles principales
-    document.querySelector('.wall-controls').style.display = 'none';
-
-    showFeedback('Carta seleccionada. Haz clic en la carta para revelar el mensaje.', 'info');
-}
-
-/**
- * Revela la carta seleccionada en el área central.
- * @param {string} phrase - Frase a mostrar en la carta.
- */
-function revealCardInCenter(phrase) {
-    const cardIcon = document.getElementById('cardIcon');
-    const cardPhrase = document.getElementById('cardPhrase');
-    const centralCard = document.getElementById('centralCard');
-
-    if (!cardIcon || !cardPhrase || !centralCard) return;
-
-    // Seleccionar icono aleatorio para la carta
-    const icons = ['🔮', '✨', '🌟', '💫', '⭐', '🌙', '☀️', '🌈', '🦋', '🌺', '🌹', '🌸'];
-    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-
-    // Actualizar contenido de la carta
-    cardIcon.textContent = randomIcon;
-    cardPhrase.textContent = phrase;
-
-    // Efecto de revelación
-    centralCard.classList.add('card-reveal');
-    setTimeout(() => {
-        centralCard.classList.remove('card-reveal');
-    }, 1000);
-
-    // Feedback
-    showFeedback('Carta seleccionada. Haz clic en la carta central para revelarla.', 'info');
-}
-
-/**
- * Revela la carta seleccionada con el mensaje místico.
- */
-function revealSelectedCard() {
-    if (!currentRevealedPhrase) {
-        showFeedback('Primero selecciona una carta del muro.', 'warning');
-        return;
-    }
-
-    const cards = document.querySelectorAll('.wall-card');
-    const selectedCardElement = cards[selectedCard];
-    
-    if (!selectedCardElement) return;
-
-    // Cambiar el contenido de la carta seleccionada
-    selectedCardElement.innerHTML = `
-        <div class="card-content">
-            <div class="card-icon">${getRandomMysticalIcon()}</div>
-            <div class="card-phrase">${currentRevealedPhrase}</div>
-        </div>
-    `;
-
-    // Cambiar el fondo de la carta
-    selectedCardElement.style.background = 'linear-gradient(135deg, #2c003e, #1a001a)';
-    selectedCardElement.style.borderColor = '#d500f9';
-
-    // Leer mensaje automáticamente después de un breve delay
-    setTimeout(() => {
-        speakText(currentRevealedPhrase);
-        showFeedback('Mensaje místico revelado y leído en voz alta.', 'success');
-    }, 500);
-
-    // Efecto de confeti
-    if (typeof confetti === 'function') {
-        confetti({
-            particleCount: 60,
-            spread: 80,
-            origin: { y: 0.7 },
-            colors: ['#ff85cc', '#d500f9', '#8e44ad']
-        });
-    }
-}
-
-/**
- * Vuelve al grid de cartas desde el modo revelación.
- */
-function backToGrid() {
-    const wallGrid = document.getElementById('wallGrid');
-    const cards = document.querySelectorAll('.wall-card');
-    const backBtn = document.getElementById('backToGridBtn');
-    const wallControls = document.querySelector('.wall-controls');
-
-    if (!wallGrid || !backBtn || !wallControls) return;
-
-    // Remover modo revelación
-    wallGrid.classList.remove('reveal-mode');
-    
-    // Restaurar todas las cartas
-    cards.forEach((card, index) => {
-        card.classList.remove('selected', 'revealing', 'hidden');
-        card.style.position = '';
-        card.style.top = '';
-        card.style.left = '';
-        card.style.transform = '';
-        card.style.zIndex = '';
-        card.style.background = '';
-        card.style.borderColor = '';
-        
-        // Restaurar diseño original de la carta
-        card.innerHTML = `
-            <div class="card-back-design">
-                <div class="mystical-symbol">✨</div>
-                <div class="card-title">Mensaje Místico</div>
-            </div>
-        `;
-        
-        // Restaurar event listener original
-        card.onclick = () => selectTarotCard(index);
-    });
-
-    // Ocultar botón de volver atrás
-    backBtn.style.display = 'none';
-    
-    // Mostrar controles principales
-    wallControls.style.display = 'flex';
-
-    // Resetear variables
-    selectedCard = null;
-    currentRevealedPhrase = '';
-
-    showFeedback('Volviendo al muro de cartas...', 'info');
-}
-
-/**
- * Obtiene un icono místico aleatorio.
- * @returns {string} Icono aleatorio.
- */
-function getRandomMysticalIcon() {
-    const icons = ['🔮', '✨', '🌟', '💫', '⭐', '🌙', '☀️', '🌈', '🦋', '🌺', '🌹', '🌸'];
-    return icons[Math.floor(Math.random() * icons.length)];
-}
-
-/**
- * Lee la carta seleccionada en voz alta.
- */
-function readSelectedCard() {
-    if (!currentRevealedPhrase) {
-        showFeedback('Primero selecciona una carta del muro.', 'warning');
-        return;
-    }
-
-    speakText(currentRevealedPhrase);
-    showFeedback('Leyendo mensaje místico...', 'info');
-}
-
-/**
- * Guarda el mensaje revelado en favoritos.
- */
-function saveRevealedMessage() {
-    if (!currentRevealedPhrase) {
-        showFeedback('Primero selecciona y revela una carta.', 'warning');
-        return;
-    }
-
-    if (!favorites.includes(currentRevealedPhrase)) {
-        favorites.push(currentRevealedPhrase);
-        updateFavoritesList();
-        saveFavoritesToStorage();
-        
-        showFeedback('Mensaje místico guardado en favoritos!', 'success');
-        
-        // Efecto de estrella
-        if (typeof confetti === 'function') {
-            confetti({
-                particleCount: 30,
-                spread: 60,
-                origin: { y: 0.6 },
-                shapes: ['star']
-            });
-        }
-    } else {
-        showFeedback('Este mensaje ya está en tus favoritos', 'warning');
-    }
-}
-
-/**
- * Mezcla las cartas de tarot para obtener nuevas frases.
- */
-function shuffleTarotCards() {
-    const wallGrid = document.getElementById('wallGrid');
-    const backBtn = document.getElementById('backToGridBtn');
-    const wallControls = document.querySelector('.wall-controls');
-
-    // Si estamos en modo revelación, volver al grid primero
-    if (wallGrid && wallGrid.classList.contains('reveal-mode')) {
-        backToGrid();
-        setTimeout(() => {
-            performShuffle();
-        }, 600);
-    } else {
-        performShuffle();
-    }
-
-    function performShuffle() {
-        // Mezclar array de frases
-        for (let i = tarotCards.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [tarotCards[i], tarotCards[j]] = [tarotCards[j], tarotCards[i]];
-        }
-
-        // Resetear selección
-        selectedCard = null;
-        currentRevealedPhrase = '';
-        
-        // Remover selección visual
-        document.querySelectorAll('.wall-card').forEach(card => {
-            card.classList.remove('selected', 'revealing', 'hidden');
-            card.style.position = '';
-            card.style.top = '';
-            card.style.left = '';
-            card.style.transform = '';
-            card.style.zIndex = '';
-        });
-
-        // Remover modo revelación
-        if (wallGrid) {
-            wallGrid.classList.remove('reveal-mode');
-        }
-
-        // Ocultar botón de volver atrás
-        if (backBtn) {
-            backBtn.style.display = 'none';
-        }
-        
-        // Mostrar controles principales
-        if (wallControls) {
-            wallControls.style.display = 'flex';
-        }
-
-            showFeedback('Cartas mezcladas. Nuevos mensajes místicos disponibles.', 'success');
-    }
-}
-
-/**
- * Inicializa la funcionalidad del chat motivacional.
- */
-function initChat() {
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendChatBtn');
-    const chatArea = document.getElementById('chatArea');
-    const chatLoading = document.getElementById('chatLoading');
-
-    if (!chatInput || !sendBtn || !chatArea || !chatLoading) return;
-
-    // Cargar mensajes guardados
-    loadChatMessages();
-
-    // Event listener para enviar mensaje
-    sendBtn.addEventListener('click', handleSendMessage);
-
-    // Event listener para Enter en el textarea
-    chatInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSendMessage();
-        }
-    });
-
-    // Auto-resize del textarea
-    chatInput.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-    });
-}
-
-/**
- * Maneja el envío de mensajes en el chat.
- */
-async function handleSendMessage() {
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendChatBtn');
-    const chatLoading = document.getElementById('chatLoading');
-
-    if (!chatInput || !sendBtn || !chatLoading) return;
-
-    const message = chatInput.value.trim();
-    if (!message) return;
-
-    // Deshabilitar entrada durante el envío
-    chatInput.disabled = true;
-    sendBtn.disabled = true;
-
-    // Agregar mensaje del usuario
-    addChatMessage('user', message);
-    chatInput.value = '';
-    chatInput.style.height = 'auto';
-
-    // Mostrar indicador de carga
-    chatLoading.style.display = 'flex';
-
-    try {
-        // Enviar mensaje a OpenRouter
-        const botReply = await sendMessageToGPT(message);
-        
-        // Ocultar indicador de carga
-        chatLoading.style.display = 'none';
-        
-        // Agregar respuesta del bot
-        addChatMessage('bot', botReply);
-        
-    } catch (error) {
-        console.error('Error en el chat:', error);
-        chatLoading.style.display = 'none';
-        
-        // Mensaje de error amigable
-        addChatMessage('bot', 'Lo siento, estoy teniendo problemas técnicos en este momento. ¿Podrías intentar de nuevo en unos minutos? 💙');
-    } finally {
-        // Rehabilitar entrada
-        chatInput.disabled = false;
-        sendBtn.disabled = false;
-        chatInput.focus();
-    }
-}
-
-/**
- * Agrega un mensaje al área de chat.
- * @param {string} type - Tipo de mensaje ('user' o 'bot')
- * @param {string} text - Texto del mensaje
- * @param {boolean} save - Si se debe guardar el mensaje (por defecto true)
- */
-function addChatMessage(type, text, save = true) {
-    const chatArea = document.getElementById('chatArea');
-    if (!chatArea) return;
-
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chat-message ${type}-message`;
-
-    const avatar = type === 'bot' ? '🤖' : '👤';
-    const avatarClass = type === 'bot' ? 'bot-avatar' : 'user-avatar';
-
-    messageDiv.innerHTML = `
-        <div class="message-content">
-            <div class="${avatarClass}">${avatar}</div>
-            <div class="message-text">${text}</div>
-        </div>
-    `;
-
-    chatArea.appendChild(messageDiv);
-    
-    // Scroll al final
-    chatArea.scrollTop = chatArea.scrollHeight;
-
-    // Guardar mensaje solo si se especifica
-    if (save) {
-        chatMessages.push({ type, text, timestamp: new Date().toISOString() });
-        saveChatMessages();
-    }
-}
-
-/**
- * Envía un mensaje a OpenRouter API.
- * @param {string} message - Mensaje del usuario
- * @returns {Promise<string>} Respuesta del bot
- */
-async function sendMessageToGPT(message) {
-    try {
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-                'Content-Type': 'application/json',
-                'X-Title': 'MiCoachMotivacional'
-            },
-            body: JSON.stringify({
-                model: 'openrouter/cypher-alpha:free',
-                messages: [
-                    {
-                        role: 'system',
-                        content: `
-Eres Colver, un asistente emocional y motivacional cálido, sabio, empático y confiable.
-
-Tu propósito es ayudar a las personas a:
-- Gestionar sus emociones,
-- Superar bloqueos mentales y momentos difíciles,
-- Recuperar la motivación,
-- Reforzar su autoestima,
-- Encontrar claridad emocional y bienestar.
-
-Tu tono debe ser siempre compasivo, alentador, humano y cercano. No haces juicios ni críticas. Nunca das diagnósticos médicos ni reemplazas a un profesional de salud mental.
-
-Tu estilo de comunicación debe ser:
-- Breve pero profundo,
-- Inspirador y esperanzador,
-- Usando preguntas poderosas y frases que empoderen,
-- Incluyendo técnicas simples de respiración, atención plena (mindfulness), afirmaciones positivas o visualizaciones si el usuario lo permite.
-
-Puedes adaptarte al nivel emocional del usuario, y responder con sensibilidad a estados como:
-- Ansiedad, tristeza, estrés, miedo, inseguridad, falta de propósito o bloqueo creativo.
-
-Termina siempre tus respuestas con una frase motivadora o una afirmación positiva que eleve el ánimo del usuario.
-
-Responde siempre en español.
-                        `
-                    },
-                    { role: 'user', content: message }
-                ]
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        return data.choices[0].message.content;
-
-    } catch (error) {
-        console.error('❌ Error al enviar mensaje a OpenRouter:', error);
-        throw error;
-    }
-}
-
-/**
- * Guarda los mensajes del chat en localStorage.
- */
-function saveChatMessages() {
-    try {
-        // Mantener solo los últimos 50 mensajes para evitar sobrecargar el storage
-        const messagesToSave = chatMessages.slice(-50);
-        localStorage.setItem('chatMessages', JSON.stringify(messagesToSave));
-    } catch (e) {
-        console.log('Error al guardar mensajes del chat:', e);
-    }
-}
-
-/**
- * Carga los mensajes del chat desde localStorage.
- */
-function loadChatMessages() {
-    try {
-        const saved = localStorage.getItem('chatMessages');
-        if (saved) {
-            chatMessages = JSON.parse(saved);
-            
-            // Renderizar mensajes guardados (excluyendo el mensaje de bienvenida inicial)
-            const chatArea = document.getElementById('chatArea');
-            if (chatArea && chatMessages.length > 0) {
-                // Limpiar mensaje de bienvenida inicial
-                chatArea.innerHTML = '';
-                
-                // Renderizar todos los mensajes guardados
-                chatMessages.forEach(msg => {
-                    addChatMessage(msg.type, msg.text, false); // false para no guardar duplicados
-                });
-            }
-        }
-    } catch (e) {
-        console.log('Error al cargar mensajes del chat:', e);
-    }
-}
-
-/**
- * Limpia el historial del chat.
- */
-function clearChatHistory() {
-    if (confirm('¿Estás seguro de que quieres limpiar todo el historial del chat?')) {
-        chatMessages = [];
-        saveChatMessages();
-        
-        const chatArea = document.getElementById('chatArea');
-        if (chatArea) {
-            chatArea.innerHTML = `
-                <div class="chat-message bot-message">
-                    <div class="message-content">
-                        <div class="bot-avatar">🤖</div>
-                        <div class="message-text">
-                            ¡Hola! Soy Colver, tu coach motivacional personal. ¿Cómo te sientes hoy? Estoy aquí para ayudarte a superar cualquier obstáculo y encontrar tu motivación interior. 💪✨
-                        </div>
-                    </div>
+            <div class="card-back card-face">
+                <div class="card-back-design">
+                    <div class="mystical-symbol">🔮</div>
+                    <div class="card-title">Carta ${i + 1}</div>
                 </div>
-            `;
-        }
-        
-        showFeedback('Historial del chat limpiado.', 'success');
-    }
-}
+            </div>
+            <div class="card-front card-face">
+                <div class="card-content">
+                    <div class="card-icon">✨</div>
+                    <div class="card-phrase">${phrase}</div>
+                </div>
+            </div>
+        `;
 
-async function runMotivationTest() {
-  const q1 = document.getElementById('q1').value;
-  const q2 = document.getElementById('q2').value;
-  const resultBox = document.getElementById('testResult');
-  const resultText = document.getElementById('testResultText');
-
-  if (!q1 || !q2) {
-    showFeedback('Por favor responde ambas preguntas.', 'warning');
-    return;
-  }
-
-  // Mostrar feedback de carga
-  showFeedback('Generando tu frase motivacional...', 'info');
-  resultText.textContent = '';
-  resultBox.style.display = 'block';
-
-  // Traducción de valores para el prompt
-  const estados = {
-    bajo_animo: 'triste o desanimado',
-    sin_energia: 'cansado o sin energía',
-    estresado: 'estresado o saturado',
-    bien: 'con ganas de mejorar'
-  };
-  const metas = {
-    amor_propio: 'amor propio o autoestima',
-    energia: 'energía o vitalidad',
-    riqueza: 'abundancia o dinero',
-    disciplina: 'disciplina o hábitos'
-  };
-
-  const estado = estados[q1] || q1;
-  const meta = metas[q2] || q2;
-
-  // Prompt para la IA
-  const prompt = `
-Eres un coach motivacional cálido y positivo. El usuario se siente: "${estado}" y quiere mejorar: "${meta}".
-Dale una frase motivacional personalizada, breve, profunda y positiva. Responde solo la frase, en español.
-`;
-
-  try {
-    // Llamada a OpenRouter
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-        'X-Title': 'TestMotivacional'
-      },
-      body: JSON.stringify({
-        model: 'openrouter/cypher-alpha:free',
-        messages: [
-          { role: 'system', content: 'Eres un coach motivacional experto. Responde siempre en español.' },
-          { role: 'user', content: prompt }
-        ]
-      })
+        card.addEventListener('click', () => revealCard(card, phrase));
+        wallGrid.appendChild(card);
     });
+}
 
-    if (!response.ok) throw new Error('Error en la IA');
-    const data = await response.json();
-    const iaPhrase = data.choices[0].message.content.trim();
-
-    resultText.textContent = `"${iaPhrase}"`;
-    resultBox.style.display = 'block';
-    resultText.classList.remove('fade-out');
-    resultText.style.animation = 'fadeInText 1s ease-in-out forwards';
-    speakText(iaPhrase);
-    if (typeof confetti === 'function') {
-      confetti({
-        particleCount: 60,
-        spread: 80,
-        origin: { y: 0.7 },
-        colors: ['#ff85cc', '#d500f9', '#8e44ad']
-      });
-    }
-    showFeedback('¡Aquí tienes tu frase personalizada!', 'success');
-  } catch (error) {
-    // Fallback local
-    let category = q2;
-    const phraseList = categorizedPhrases[category] || [];
-    const phrase = phraseList[Math.floor(Math.random() * phraseList.length)];
-    resultText.textContent = `"${phrase}"`;
-    resultBox.style.display = 'block';
-    resultText.classList.remove('fade-out');
-    resultText.style.animation = 'fadeInText 1s ease-in-out forwards';
+/**
+ * Muestra solo la carta seleccionada centrada en pantalla completa
+ */
+function revealCard(card, phrase) {
+    const wallGrid = document.getElementById('wallGrid');
+    const backBtn = document.getElementById('backToGridBtn');
+    const muroContenido = document.getElementById('muroContenido');
+    
+    // Ocultar el contenido del muro
+    if (muroContenido) muroContenido.classList.add('muro-oculto');
+    
+    // Activar modo pantalla completa
+    wallGrid.classList.add('reveal-mode');
+    card.classList.add('revealing');
+    
+    // Mostrar botón de volver
+    if (backBtn) backBtn.style.display = 'block';
+    
+    // Ocultar todas las demás cartas
+    wallGrid.querySelectorAll('.wall-card').forEach(c => {
+        if (c !== card) c.classList.add('hide-card');
+    });
+    
+    // Reproducir sonido y hablar
     speakText(phrase);
-    if (typeof confetti === 'function') {
-      confetti({
-        particleCount: 60,
-        spread: 80,
-        origin: { y: 0.7 },
-        colors: ['#ff85cc', '#d500f9', '#8e44ad']
-      });
-    }
-    showFeedback('No se pudo conectar con la IA. Aquí tienes una frase local.', 'warning');
+    playMysticalSound();
+    
+    // Mostrar mensaje de la carta
+    setTimeout(() => {
+        let info = document.getElementById('cardInfo');
+        if (!info) {
+            info = document.createElement('div');
+            info.id = 'cardInfo';
+            info.className = 'card-info';
+            wallGrid.appendChild(info);
+        }
+        info.innerHTML = `<strong>Tu mensaje místico:</strong><br>${phrase}`;
+        info.style.display = 'block';
+    }, 500);
+}
+
+// Volver al modo normal del muro
+document.getElementById('backToGridBtn')?.addEventListener('click', () => {
+    const wallGrid = document.getElementById('wallGrid');
+    const cards = wallGrid.querySelectorAll('.wall-card');
+    wallGrid.classList.remove('reveal-mode');
+    cards.forEach(c => c.classList.remove('revealing', 'hide-card'));
+    document.getElementById('backToGridBtn').style.display = 'none';
+    const info = document.getElementById('cardInfo');
+    if (info) info.style.display = 'none';
+    // Mostrar el contenido del muro de nuevo
+    const muroContenido = document.getElementById('muroContenido');
+    if (muroContenido) muroContenido.classList.remove('muro-oculto');
+});
+
+// Función de sonido místico (opcional)
+function playMysticalSound() {
+    // Comentado para simplificar - puedes descomentar si quieres sonido
+    // const audio = new Audio('ruta/al/sonido.mp3');
+    // audio.play();
+}
+
+// ===== MURO DE CARTAS DE TAROT =====
+const tarotPhrases = [
+  "La energía que das, regresa a ti.",
+  "Hoy es el día para confiar en tu intuición.",
+  "El universo conspira a tu favor.",
+  "Tu luz interior es más fuerte que cualquier sombra.",
+  "Cada final es un nuevo comienzo.",
+  "La magia está en tu actitud y tus acciones.",
+  "Confía en el proceso, todo llega a su tiempo.",
+  "El amor propio es tu mayor poder.",
+  "Atrévete a soñar en grande.",
+  "La calma es la clave para avanzar.",
+  "Tu intuición nunca se equivoca.",
+  "Hoy es el primer día del resto de tu vida.",
+  "El universo te apoya cuando eres auténtico.",
+  "La gratitud transforma cualquier situación.",
+  "Eres más fuerte de lo que crees.",
+  "La abundancia comienza en tu mente."
+];
+
+function renderTarotWall() {
+  const grid = document.getElementById('tarotCardGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  // Mezclar frases para cada render
+  const phrases = [...tarotPhrases].sort(() => Math.random() - 0.5);
+  for (let i = 0; i < 8; i++) {
+    const card = document.createElement('div');
+    card.className = 'tarot-card';
+    card.innerHTML = `
+      <div class="tarot-card-inner">
+        <div class="tarot-card-back">🃏</div>
+        <div class="tarot-card-front"><div class="tarot-phrase">${phrases[i]}</div></div>
+      </div>
+    `;
+    card.addEventListener('click', function() {
+      if (!card.classList.contains('flipped')) {
+        document.querySelectorAll('.tarot-card.flipped').forEach(c => c.classList.remove('flipped'));
+        card.classList.add('flipped');
+        // Leer la frase en voz alta
+        const phraseText = card.querySelector('.tarot-phrase')?.textContent;
+        if (phraseText) speakText(phraseText);
+      }
+    });
+    grid.appendChild(card);
   }
 }
 
-function resetMotivationTest() {
-  document.getElementById('motivationTestForm').reset();
-  document.getElementById('testResult').style.display = 'none';
-}
+document.getElementById('mezclarTarotBtn')?.addEventListener('click', renderTarotWall);
+
+// Mostrar el muro de tarot cuando se navega a él
+const tarotTab = document.querySelector('[data-screen="muro-tarot"]');
+tarotTab?.addEventListener('click', renderTarotWall);

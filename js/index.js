@@ -1424,7 +1424,7 @@ let currentRevealedPhrase = '';
 
 // Variables para el chat
 let chatMessages = [];
-const OPENROUTER_API_KEY = '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';
+const OPENROUTER_API_KEY = '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';
 
 // Frases místicas para las cartas de tarot
 const mysticalPhrases = [
